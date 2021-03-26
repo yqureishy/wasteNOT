@@ -4,7 +4,7 @@
     "password": "Jlc4HL0XNLGqg-JXnkjMDpGLDXMfyvpY",
     "database": "licpeqia",
     "host": "queenie.db.elephantsql.com",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
