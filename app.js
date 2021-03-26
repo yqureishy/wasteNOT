@@ -10,6 +10,11 @@ app.set('view engine','mustache')
 
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(session({
+    secret: "keyboard-cat",
+    resave: false,
+    saveUnitialized: true,
+}))
 
 
 
