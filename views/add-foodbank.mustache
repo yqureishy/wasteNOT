@@ -27,8 +27,20 @@
 	<section class="hero">
 		<!-- Photo by Joel Muniz on unsplash.com -->
 		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
-		<h1>Hearts Feeding H-town</h1>
-		<h3>We're on a mission to end hunger in Houston.</h3>
+		<h1>Admin Page Only</h1>
+		<h3>Just here to add new food distribution locations to the network.</h3>
+        <form method="POST" action="add-foodbank">
+        <input type="text" placeholder="Enter name" name="name" size="50"/><br><br>
+        <input type="text" placeholder="Enter address" name="address" size="50"/><br><br>
+        <input type="text" placeholder="Enter city" name="city" />&nbsp;&nbsp;&nbsp;
+        <input type="text" placeholder="Enter state" name="state" />&nbsp;&nbsp;&nbsp;
+        <input type="text" placeholder="Enter zip" name="zip" /><br><br>
+        <input type="text" placeholder="Enter phone" name="phone" /><br><br>
+        <button class="btn">Save Location</button>
+        </form>
+        <br>
+        <h3>{{message}}<h3>
+        <br>
 			<a href="http://tutorialzine.com/2016/06/freebie-landing-page-template-with-flexbox/" class="btn">What We Do</a>
 	</section>
 
@@ -37,21 +49,11 @@
 		<h3 class="title">What We Do</h3>
 		<p>We support a small network of food banks and soup kitchens in the greater Houston area. 
 		<br><br>
-		<label for="foodbanks">Our Current Locations:</label>
-		<ul id="foodbanks" style="text-align: center">
-		{{#foodbanks}}
-		<li>
-		<b>{{name}}</b><br>
-		{{address}}<br>
-		{{city}}, {{state}} {{zip}}<br>
-		{{phone}}<br><br>
-		</li>
-		{{/foodbanks}}
+		Our Locations:
+		
 		</p>
+		<hr>
 
-		<hr></hr>
-
-	<section>
 		<ul class="grid">
 			<li class="small" style="background-image: url(img/coast.jpg);"></li>
 			<li class="large" style="background-image: url(img/island.jpg);"></li>

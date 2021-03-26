@@ -8,7 +8,13 @@ router.get('/', (req, res) => {
     res.render('index')
 })
 
-// display food bank landing page
-router.get('/foodbank', (req, res) => {
-    res.render('foodbank')
+
+// display login page
+router.get('/login', (req, res) => {
+    res.render('login')
+})
+
+// display registration page
+router.get('/register', (req, res) => {
+    res.render('register')
 })
