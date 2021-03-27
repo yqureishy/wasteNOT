@@ -28,10 +28,17 @@
 	<section class="hero">
 		<!-- Photo by Katie Smith on unsplash.com -->
 		<div class="background-image" style="background-image: url(img/veggies.jpg);"></div>
-		<h3>{{newUserMessage}}</h3>
-		<h1>Login Stuff Goes Here</h1>
-		<h3>Exactly how to display it? idk yet</h3>
-			<a href="#howitworks" class="btn">Probably Won't Need This Button</a>
+		<h3><i>{{newUserMessage}}</i></h3>
+		<h1>Log In To Your Account</h1>
+		<p>Don't have an account yet? <a href="/register">Sign up here.</a><br><br>
+		</p>
+		<br>
+		<form class="nice-form" method="POST" action="/login">
+		<input type="text" placeholder="Email address" name="emailAsUsername" /><br>
+		<br><br>
+		<input type="password" placeholder="Password" name="password" /><br><br>
+        <button class="btn">Sign In</button>
+        </form>
 	</section>
 
 

@@ -18,8 +18,9 @@
 	<header>
 		<h2><a href="#" class="header-links">Logo Goes Here?</a></h2>
 		<nav>
+            <li><a href="foodbank" class="header-links">HFH Home</li>
 			<li><a href="/" class="header-links">wasteNOT</a></li>
-			<li><a href="/locations" class="header-links">Locations</a></li>
+			<li><a href="#" class="header-links">Locations</a></li>
 		</nav>
 	</header>
 
@@ -27,37 +28,30 @@
 	<section class="hero">
 		<!-- Photo by Joel Muniz on unsplash.com -->
 		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
-		<h1>Hearts Feeding H-town</h1>
-		<h3>We're on a mission to end hunger in Houston.</h3>
-			<a href="http://tutorialzine.com/2016/06/freebie-landing-page-template-with-flexbox/" class="btn">What We Do</a>
+		<h1>Our Network</h1>
+		<h3>See all our member food banks and soup kitchens</h3>
+			<a href="#foodbanks" class="btn">Locations</a>
+
 	</section>
 
 
 	<section class="our-work">
-		<h3 class="title">What We Do</h3>
-		<p>We support a small <a href="/locations">network</a> of food banks and soup kitchens in the greater Houston area. We make daily runs to collect donations of unsold food from our restaurant partners, with proper storage to transport frozen and refrigerated foods. We then distribute them among the network locations based on their changing needs, to help feed a greater number of our city's food-insecure population.</p>
-		<br><br>
-		<hr>
-		<br><br>
-		<h3 class="title">Huge Thanks to Our Restaurant Partners!</h3>
-		<br>
-		<ul id="restaurants" style="text-align: center">
-		{{#users}}
+		<h3 class="title">Locations In Our Network</h3>
+		<p>
+        {{#foodbanks}}
+		<ul id="foodbanks" style="text-align: center">
 		<li>
-		<b><a href="{{website}}">{{restaurantName}}</a></b><br>
-		{{restaurantStreetAddress}}<br>
+		<b>{{name}}</b><br>
+		{{address}}<br>
 		{{city}}, {{state}} {{zip}}<br>
-		{{phone}}<br><br><br>
+		{{phone}}<br><br>
 		</li>
-		{{/users}}
 		</ul>
-		<br><br>
+		{{/foodbanks}}</p>
+
+
 		<hr>
-		<br><br>
-		<h3 class="title">See All Food Bank Locations In Our Network</h3>
-		<a href="/locations" class="btn">Locations</a>
-		</p>
-	</section>
+    </section>
 	<section>
 		<ul class="grid">
 			<li class="small" style="background-image: url(img/coast.jpg);"></li>
