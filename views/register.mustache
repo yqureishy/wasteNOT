@@ -18,27 +18,43 @@
 	<header>
 		<h2><a href="#" class="header-links">Logo Goes Here?</a></h2>
 		<nav>
-			<li><a href="/" class="header-links">Home</a></li>
-            <li><a href="/foodbank" class="header-links">About</a></li>
-			<li><a href="/login" class="header-links">Login</a></li>
+			<li><a href="/" class="header-links">wasteNOT</a></li>
+			<li><a href="#" class="header-links">Locations</a></li>
 		</nav>
 	</header>
 
 
 	<section class="hero">
-		<!-- Photo by Katie Smith on unsplash.com -->
-		<div class="background-image" style="background-image: url(img/veggies.jpg);"></div>
-		<h1>New User Registration Stuff Goes Here</h1>
-		<h3>Exactly how to display it? idk yet</h3>
-		<a href="#howitworks" class="btn">Probably Won't Need This Button</a>
+	<br><br>
+		<!-- Photo by Joel Muniz on unsplash.com -->
+		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
+		<h1>New Restaurant Partner Registration</h1>
+		<h3>Sign up today!</h3>
+        <form class="nice-form" method="POST" action="/register">
+		<input type="text" placeholder="Email" name="emailAsUsername" /><br>
+		(Your email will serve as your username.)<br><br>
+		<input type="password" placeholder="Choose a password" name="password" /><br><br>
+		<input type="text" placeholder="First name" name="firstName" />
+        <input type="text" placeholder="Last name" name="lastName" /><br><br>
+		<input type="text" placeholder="Restaurant name" name="restaurantName" />
+        <input type="text" placeholder="Restaurant address" name="restaurantStreetAddress" /><br><br>
+        <input type="text" placeholder="City" name="city" />
+        <input type="text" placeholder="State" name="state" />
+        <input type="text" placeholder="Zip" name="zip" /><br><br>
+        <input type="text" placeholder="Phone number" name="phone" /><br><br>
+		<input type="text" placeholder="Restaurant website" name="website" /><br><br>
+        <button class="btn">Sign Up</button>
+        </form>
+        <br>
+        <h3>{{message}}<h3>
+        <br>
 	</section>
 
-
 	<section class="our-work">
-		<h3 class="title" id="howitworks">How It Works</h3>
-		<p>We partner with local restaurants to pick up excess unsold food, prepared or raw, that might otherwise be discarded. All you need to do is tell us the what and the where, and one of our volunteers will be there the same day to take it off your hands. Food donations are also eligible for a <a href="https://www.nrdc.org/sites/default/files/food-donation-federal-tax-deduction-guide-201803.pdf">charitable tax deduction</a> that is larger than that of simply writing the item off as a loss. Help us feed the hungry, reduce waste, and improve your bottom line by <a href="#register">signing up today!</a></p>
+		<h3 class="title">Maybe Something Goes Here</h3>
+		<p>Maybe not. The functionality of this page is fairly limited.</p>
 		<hr>
-
+		<br><br>
 		<ul class="grid">
 			<li class="small" style="background-image: url(img/coast.jpg);"></li>
 			<li class="large" style="background-image: url(img/island.jpg);"></li>
@@ -52,7 +68,7 @@
 		<h3 class="title">Features and services</h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
 		<hr>
-
+		<br><br>
 		<ul class="grid">
 			<li>
 				<i class="fa fa-camera-retro"></i>
@@ -93,7 +109,7 @@
 		<h3 class="title">Join our newsletter</h3>	
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
 		<hr>
-
+		<br><br>
 		<form>
 			<input type="email" placeholder="Email">
 			<a href="#" class="btn">Subscribe now</a>

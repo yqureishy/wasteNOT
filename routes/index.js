@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     res.render('index')
 })
 
-
 // display login page
 router.get('/login', (req, res) => {
     res.render('login')
@@ -18,3 +17,7 @@ router.get('/login', (req, res) => {
 router.get('/register', (req, res) => {
     res.render('register')
 })
+
+
+
+

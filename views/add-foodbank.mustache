@@ -25,15 +25,16 @@
 
 
 	<section class="hero">
+	<br><br>
 		<!-- Photo by Joel Muniz on unsplash.com -->
 		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
 		<h1>Admin Page Only</h1>
 		<h3>Just here to add new food distribution locations to the network.</h3>
-        <form method="POST" action="add-foodbank">
-        <input type="text" placeholder="Enter name" name="name" size="50"/><br><br>
-        <input type="text" placeholder="Enter address" name="address" size="50"/><br><br>
-        <input type="text" placeholder="Enter city" name="city" />&nbsp;&nbsp;&nbsp;
-        <input type="text" placeholder="Enter state" name="state" />&nbsp;&nbsp;&nbsp;
+        <form class="nice-form" method="POST" action="add-foodbank">
+        <input type="text" placeholder="Enter location name" name="name" /><br><br>
+        <input type="text" placeholder="Enter address" name="address" /><br><br>
+        <input type="text" placeholder="Enter city" name="city" /restaurants><br><br>
+        <input type="text" placeholder="Enter state" name="state" /><br><br>
         <input type="text" placeholder="Enter zip" name="zip" /><br><br>
         <input type="text" placeholder="Enter phone" name="phone" /><br><br>
         <button class="btn">Save Location</button>
@@ -41,17 +42,13 @@
         <br>
         <h3>{{message}}<h3>
         <br>
-			<a href="http://tutorialzine.com/2016/06/freebie-landing-page-template-with-flexbox/" class="btn">What We Do</a>
+
 	</section>
 
 
 	<section class="our-work">
-		<h3 class="title">What We Do</h3>
-		<p>We support a small network of food banks and soup kitchens in the greater Houston area. 
-		<br><br>
-		Our Locations:
-		
-		</p>
+		<h3 class="title">Maybe Something Goes Here</h3>
+		<p>Maybe not. The functionality of this page is fairly limited.</p>
 		<hr>
 
 		<ul class="grid">
@@ -67,7 +64,7 @@
 		<h3 class="title">Features and services</h3>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
 		<hr>
-
+		<br><br>
 		<ul class="grid">
 			<li>
 				<i class="fa fa-camera-retro"></i>
@@ -108,7 +105,7 @@
 		<h3 class="title">Join our newsletter</h3>	
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
 		<hr>
-
+		<br><br>
 		<form>
 			<input type="email" placeholder="Email">
 			<a href="#" class="btn">Subscribe now</a>
