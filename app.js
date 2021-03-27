@@ -30,6 +30,47 @@ app.get('/foodbank', (req, res) => {
     })
 })
 
+// add new restaurant user
+app.post('/register', (req, res) => {
+
+    const emailAsUsername = req.body.emailAsUsername;
+    const password = req.body.password
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    const restaurantName = req.body.restaurantName
+    const restaurantStreetAddress = req.body.restaurantStreetAddress
+    const address = req.body.address
+    const city = req.body.city
+    const state = req.body.state
+    const zip = req.body.zip
+    const phone = req.body.phone
+    const website = req.body.website
+
+//hash bit is broken right now...just puts passwords in DB as clear text :(
+    bcrypt.genSalt(10, function (error, salt) {
+        bcrypt.hash(password, salt, function (error, hash) {
+            if (!error) {
+                console.log(password)
+                let user = models.User.build({
+                    emailAsUsername: emailAsUsername,			
+                    password: password,
+                    firstName: firstName,
+                    lastName: lastName,
+                    restaurantName: restaurantName,
+                    restaurantStreetAddress: restaurantStreetAddress,
+                    city: city,
+                    state: state,
+                    zip: zip,
+                    phone: phone,
+                    website: website
+                })
+                user.save()  
+                res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
+            }
+        })
+    })
+})
+
 
 // display admin page to add a foodbank
 app.get('/add-foodbank', (req, res) => {
