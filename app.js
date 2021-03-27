@@ -22,19 +22,27 @@ app.use(express.json())
 app.use('/', indexRouter)
 
 
-// display food bank 'about us' landing page
-app.get('/foodbank', (req, res) => {
+// display food bank 'about us' landing page w/restaurant "Thank You" list
+ app.get('/foodbank', (req, res) => {
+    models.User.findAll({})
+    .then(users => {
+        res.render('foodbank', {users: users})
+    })
+})
+
+// display foodbank locations page
+app.get('/locations', (req, res) => {
     models.Foodbank.findAll({})
     .then(foodbanks => {
-        res.render('foodbank', {foodbanks:foodbanks})
+        res.render('locations', {foodbanks: foodbanks})
     })
 })
 
 // add new restaurant user
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
 
     const emailAsUsername = req.body.emailAsUsername;
-    const password = req.body.password
+    let password = req.body.password
     const firstName = req.body.firstName
     const lastName = req.body.lastName
     const restaurantName = req.body.restaurantName
@@ -46,30 +54,28 @@ app.post('/register', (req, res) => {
     const phone = req.body.phone
     const website = req.body.website
 
-//hash bit is broken right now...just puts passwords in DB as clear text :(
-    bcrypt.genSalt(10, function (error, salt) {
-        bcrypt.hash(password, salt, function (error, hash) {
-            if (!error) {
-                console.log(password)
-                let user = models.User.build({
-                    emailAsUsername: emailAsUsername,			
-                    password: password,
-                    firstName: firstName,
-                    lastName: lastName,
-                    restaurantName: restaurantName,
-                    restaurantStreetAddress: restaurantStreetAddress,
-                    city: city,
-                    state: state,
-                    zip: zip,
-                    phone: phone,
-                    website: website
-                })
-                user.save()  
-                res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
-            }
-        })
+    const salt = await bcrypt.genSalt(10)
+    let hashedPassword = await bcrypt.hash(password, salt)
+    
+    let user = models.User.build({
+        emailAsUsername: emailAsUsername,			
+        password: hashedPassword,
+        firstName: firstName,
+        lastName: lastName,
+        restaurantName: restaurantName,
+        restaurantStreetAddress: restaurantStreetAddress,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone,
+        website: website
     })
+    user.save()  
+    res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
+        
 })
+
+
 
 
 // display admin page to add a foodbank
@@ -99,7 +105,31 @@ app.post('/add-foodbank', (req, res) => {
     res.render('add-foodbank', {message: 'Location saved successfully.'})
   })
 
+// display restaurant user profile
+app.get('/profile', (req, res) => {
+    res.render('profile')
+})
 
+// add new food donation to DB
+app.post('/donation', (req, res) => {
+    const itemName = req.body.itemName
+    const estimatedQty = parseInt(req.body.estimatedQty)
+    const estimatedExpiration = req.body.estimatedExpiration
+    const isReadyToEat = req.body.isReadyToEat
+    const storageTemp = req.body.storageTemp
+  
+    let foodDonation = models.FoodDonation.build({
+        itemName: itemName,			
+        estimatedQty: estimatedQty,
+        estimatedExpiration: estimatedExpiration,
+        isReadyToEat: isReadyToEat,
+        storageTemp: storageTemp,
+    })
+    foodDonation.save()  
+    res.render('profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
+})
+
+// start server
 app.listen(3000,()=>{
     console.log("Server is running...")
 })

@@ -18,48 +18,51 @@
 	<header>
 		<h2><a href="#" class="header-links">Logo Goes Here?</a></h2>
 		<nav>
-			<li><a href="/" class="header-links">wasteNOT</a></li>
-			<li><a href="/locations" class="header-links">Locations</a></li>
+			<li><a href="/foodbank" class="header-links">About HFH</a></li>
+			<li><a href="/" class="header-links">Home</a></li>
 		</nav>
 	</header>
 
 
 	<section class="hero">
-		<!-- Photo by Joel Muniz on unsplash.com -->
-		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
-		<h1>Hearts Feeding H-town</h1>
-		<h3>We're on a mission to end hunger in Houston.</h3>
-			<a href="http://tutorialzine.com/2016/06/freebie-landing-page-template-with-flexbox/" class="btn">What We Do</a>
+		<!-- Photo by Katie Smith on unsplash.com -->
+		<div class="background-image" style="background-image: url(img/veggies.jpg);"></div>
+		<h2><i>{{message}}</i><h2><br><br>
+        <h1>Welcome Back!</h1>
+		<h3>Enter a new donation or see all past donations</h3>
+			<a href="#getstarted" class="btn">Get Started</a>
 	</section>
 
 
 	<section class="our-work">
-		<h3 class="title">What We Do</h3>
-		<p>We support a small <a href="/locations">network</a> of food banks and soup kitchens in the greater Houston area. We make daily runs to collect donations of unsold food from our restaurant partners, with proper storage to transport frozen and refrigerated foods. We then distribute them among the network locations based on their changing needs, to help feed a greater number of our city's food-insecure population.</p>
-		<br><br>
+		<h3 class="title" id="getstarted">Enter A New Donation</h3>
+		 <form class="nice-form" method="POST" action="/donation">
+		<input type="text" placeholder="Name of food item" name="itemName" />
+        Enter estimated quantity:
+		<input type="number" min="0" name="estimatedQty" />
+        <input type="text" placeholder="Estimated expiration" name="estimatedExpiration" /><br><br>
+		Is this item ready-to-eat without further preparation beyond reheating?<br> <i>(Don't worry, we'll happily take it either way!)</i><br><br>
+        <input type="radio" id="yes" name="isReadyToEat" value="true">
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="isReadyToEat" value="false">
+        <label for="no">No</label><br><br>
+        What is the safe storage temperature for this item?<br><br>
+        <input type="radio" id="roomtemp" name="storageTemp" value="room_temp">
+        <label for="roomtemp">Room Temp</label><br>
+        <input type="radio" id="fridge" name="storageTemp" value="refrigerated">
+        <label for="fridge">Refrigerated</label><br>
+        <input type="radio" id="frozen" name="storageTemp" value="frozen">
+        <label for="frozen">Frozen</label><br><br>
+        <button class="btn">Save Donation</button>
+        </form>
+        <br>
+
+        <br>
 		<hr>
-		<br><br>
-		<h3 class="title">Huge Thanks to Our Restaurant Partners!</h3>
-		<br>
-		<ul id="restaurants" style="text-align: center">
-		{{#users}}
-		<li>
-		<b><a href="{{website}}">{{restaurantName}}</a></b><br>
-		{{restaurantStreetAddress}}<br>
-		{{city}}, {{state}} {{zip}}<br>
-		{{phone}}<br><br><br>
-		</li>
-		{{/users}}
-		</ul>
-		<br><br>
-		<hr>
-		<br><br>
-		<h3 class="title">See All Food Bank Locations In Our Network</h3>
-		<a href="/locations" class="btn">Locations</a>
-		</p>
-	</section>
-	<section>
-		<ul class="grid">
+        <br><br>
+		<h3 class="title" id="see-donations">See All Past Donations</h3>
+        
+        <ul class="grid">
 			<li class="small" style="background-image: url(img/coast.jpg);"></li>
 			<li class="large" style="background-image: url(img/island.jpg);"></li>
 			<li class="large" style="background-image: url(img/balloon.jpg);"></li>
