@@ -5,7 +5,6 @@ const models = require('../models')
 
 const SALT_ROUNDS = 10
 
-module.exports = router
 
 // display wasteNOT landing page
 router.get('/index', (req, res) => {
@@ -74,9 +73,16 @@ router.post('/register', async (req, res) => {
 
     const salt = await bcrypt.genSalt(10)
     let hashedPassword = await bcrypt.hash(password, salt)
+    let registeredUser = models.User.findOne({
+        where:{
+            emailAsUsername: emailAsUsername
+        }
+    })
     
-    let user = models.User.build({
-        emailAsUsername: emailAsUsername,			
+    if(registeredUser == null){
+        
+    let newUser = models.User.build({
+        emailAsUsername: emailAsUsername,           
         password: hashedPassword,
         firstName: firstName,
         lastName: lastName,
@@ -88,10 +94,33 @@ router.post('/register', async (req, res) => {
         phone: phone,
         website: website
     })
-    user.save()  
-    res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
+
+    let savedUser = await registeredUser.save()
+    if(savedUser != null) {
+        res.redirect('/login', {newUserMessage: 'New restaurant partner saved successfully!'})
+    }else{
+        res.render('register',{message:"Username already exists."})
+    }
+
+    } else {
+        res.render('register',{message:"Username already exists."})
+    }
+    
+})
         
+router.get('/logout', (req, res, next) => {
+
+    if(req.session) {
+        req.session.destroy((error) => {
+            if(error) {
+                next(error)
+            }else {
+                res.redirect('/index')
+            }
+        })
+    }
 })
 
+module.exports = router
 
 
