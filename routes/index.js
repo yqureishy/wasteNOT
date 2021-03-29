@@ -40,14 +40,16 @@ router.post('/login', async (req, res) => {
                 //create a session
                 if(req.session) {
                     req.session.user = {userId: user.id}
-                    res.redirect('/profile')
+                    res.redirect('/users/profile')
                 }
                 
             } else {
+                console.log('not working')
                 res.render('login', {message: 'Incorrect email or password'})
             }
         })
     } else {
+        console.log('not working')
         res.render('login', {message: 'Incorrect email or password'})
         
 
