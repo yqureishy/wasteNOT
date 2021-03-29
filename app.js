@@ -8,7 +8,7 @@ const { Op } = require('sequelize')
 const router = express.Router()
 const indexRouter = require('./routes/index')
 const userRoutes = require('./routes/users')
-
+const authenticate = require('./middlewares/authenticate')
 
 
 app.use(express.urlencoded())
@@ -23,8 +23,7 @@ app.set('views','./views')
 app.set('view engine','mustache')
 app.use(express.json())
 app.use('/', indexRouter)
-app.use('/users', userRoutes)
-
+app.use('/users', authenticate, userRoutes)
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {
@@ -49,7 +48,7 @@ app.get('/locations', (req, res) => {
 
 
 // display admin page to add a foodbank
-app.get('/add-foodbank', (req, res) => {
+app.get('/add-foodbank', authenticate, (req, res) => {
     res.render('add-foodbank')
 })
 
@@ -74,6 +73,9 @@ app.post('/add-foodbank', (req, res) => {
     foodbank.save()  
     res.render('add-foodbank', {message: 'Location saved successfully.'})
   })
+
+
+
 
 
 
