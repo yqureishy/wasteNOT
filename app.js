@@ -7,6 +7,7 @@ const models = require('./models')
 const { Op } = require('sequelize')
 const router = express.Router()
 const indexRouter = require('./routes/index')
+const authenticate = require('./middlewares/authenticate')
 
 app.use(express.urlencoded())
 app.use(session({
@@ -20,20 +21,6 @@ app.set('views','./views')
 app.set('view engine','mustache')
 app.use(express.json())
 app.use('/', indexRouter)
-
-
-function authenticate(req,res,next){
-    if(req.session){
-        if(req.session.emailAsUsername){
-            next()
-        }else{
-            res.redirect('/login')
-        }
-    }else {
-        res.redirect('/login')
-    }
-}
-
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {
