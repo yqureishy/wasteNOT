@@ -1,10 +1,14 @@
 const express = require('express')
 const router = express.Router()
+const bcrypt = require('bcryptjs')
+const models = require('../models')
+
+const SALT_ROUNDS = 10
 
 module.exports = router
 
 // display wasteNOT landing page
-router.get('/', (req, res) => {
+router.get('/index', (req, res) => {
     res.render('index')
 })
 
@@ -18,7 +22,74 @@ router.get('/register', (req, res) => {
     res.render('register')
 })
 
+router.post('/login', async (req, res) => {
 
+    let emailAsUsername = req.body.emailAsUsername
+    let password = req.body.password
+
+    let user = await models.User.findOne( {
+        where: {
+            emailAsUsername: emailAsUsername
+        }
+    })
+    if (user != null) {
+        bcrypt.compare(password, user.password, (error, result) => {
+
+            if(result) {
+
+                //create a session
+                if(req.session) {
+                    req.session.user = {userId: user.id}
+                    res.redirect('/profile')
+                }
+                
+            } else {
+                res.render('login', {message: 'Incorrect email or password'})
+            }
+        })
+    } else {
+        res.render('login', {message: 'Incorrect email or password'})
+        
+
+    }
+})
+
+// add new restaurant user
+router.post('/register', async (req, res) => {
+
+    const emailAsUsername = req.body.emailAsUsername;
+    let password = req.body.password
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    const restaurantName = req.body.restaurantName
+    const restaurantStreetAddress = req.body.restaurantStreetAddress
+    const address = req.body.address
+    const city = req.body.city
+    const state = req.body.state
+    const zip = req.body.zip
+    const phone = req.body.phone
+    const website = req.body.website
+
+    const salt = await bcrypt.genSalt(10)
+    let hashedPassword = await bcrypt.hash(password, salt)
+    
+    let user = models.User.build({
+        emailAsUsername: emailAsUsername,			
+        password: hashedPassword,
+        firstName: firstName,
+        lastName: lastName,
+        restaurantName: restaurantName,
+        restaurantStreetAddress: restaurantStreetAddress,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone,
+        website: website
+    })
+    user.save()  
+    res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
+        
+})
 
 
 

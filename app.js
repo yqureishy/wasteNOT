@@ -7,19 +7,21 @@ const models = require('./models')
 const { Op } = require('sequelize')
 const router = express.Router()
 const indexRouter = require('./routes/index')
+const checkAuthorization = require('./middleware/authorization')
+
 
 app.use(express.urlencoded())
 app.use(session({
     secret: "keyboard-cat",
-    resave: false,
-    saveUnitialized: true,
+    resave: true,
+    saveUnitialized: false,
 }))
 app.use(express.static('static'))
 app.engine('mustache',mustacheExpress())
 app.set('views','./views')
 app.set('view engine','mustache')
 app.use(express.json())
-app.use('/', indexRouter)
+app.use('/', checkAuthorization, indexRouter)
 
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
@@ -38,74 +40,8 @@ app.get('/locations', (req, res) => {
     })
 })
 
-// add new restaurant user
-app.post('/register', async (req, res) => {
 
-    const emailAsUsername = req.body.emailAsUsername;
-    let password = req.body.password
-    const firstName = req.body.firstName
-    const lastName = req.body.lastName
-    const restaurantName = req.body.restaurantName
-    const restaurantStreetAddress = req.body.restaurantStreetAddress
-    const address = req.body.address
-    const city = req.body.city
-    const state = req.body.state
-    const zip = req.body.zip
-    const phone = req.body.phone
-    const website = req.body.website
 
-    const salt = await bcrypt.genSalt(10)
-    let hashedPassword = await bcrypt.hash(password, salt)
-    
-    let user = models.User.build({
-        emailAsUsername: emailAsUsername,			
-        password: hashedPassword,
-        firstName: firstName,
-        lastName: lastName,
-        restaurantName: restaurantName,
-        restaurantStreetAddress: restaurantStreetAddress,
-        city: city,
-        state: state,
-        zip: zip,
-        phone: phone,
-        website: website
-    })
-    user.save()  
-    res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
-        
-})
-
-app.post('/login', async (req, res) => {
-
-    let emailAsUsername = req.body.emailAsUsername
-    let password = req.body.password
-
-    let user = await models.User.findOne( {
-        where: {
-            emailAsUsername: emailAsUsername
-        }
-    })
-    if (user != null) {
-        bcrypt.compare(password, user.password, (error, result) => {
-
-            if(result) {
-
-                //create a session
-                if(req.session) {
-                    req.session.user = {userId: user.id}
-                    res.redirect('/profile')
-                }
-                
-            } else {
-                res.render('login', {message: 'Incorrect email or password'})
-            }
-        })
-    } else {
-        res.render('login', {message: 'Incorrect email or password'})
-        
-
-    }
-})
 
 
 
