@@ -22,6 +22,19 @@ app.use(express.json())
 app.use('/', indexRouter)
 
 
+function authenticate(req,res,next){
+    if(req.session){
+        if(req.session.emailAsUsername){
+            next()
+        }else{
+            res.redirect('/login')
+        }
+    }else {
+        res.redirect('/login')
+    }
+}
+
+
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {
     models.User.findAll({})
@@ -111,7 +124,7 @@ app.post('/login', async (req, res) => {
 
 
 // display admin page to add a foodbank
-app.get('/add-foodbank', (req, res) => {
+app.get('/add-foodbank', authenticate, (req, res) => {
     res.render('add-foodbank')
 })
 
@@ -138,7 +151,7 @@ app.post('/add-foodbank', (req, res) => {
   })
 
 // display restaurant user profile
-app.get('/profile', (req, res) => {
+app.get('/profile',authenticate, (req, res) => {
     res.render('profile')
 })
 
