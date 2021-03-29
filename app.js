@@ -75,6 +75,38 @@ app.post('/register', async (req, res) => {
         
 })
 
+app.post('/login', async (req, res) => {
+
+    let emailAsUsername = req.body.emailAsUsername
+    let password = req.body.password
+
+    let user = await models.User.findOne( {
+        where: {
+            emailAsUsername: emailAsUsername
+        }
+    })
+    if (user != null) {
+        bcrypt.compare(password, user.password, (error, result) => {
+
+            if(result) {
+
+                //create a session
+                if(req.session) {
+                    req.session.user = {userId: user.id}
+                    res.redirect('/profile')
+                }
+                
+            } else {
+                res.render('login', {message: 'Incorrect email or password'})
+            }
+        })
+    } else {
+        res.render('login', {message: 'Incorrect email or password'})
+        
+
+    }
+})
+
 
 
 
