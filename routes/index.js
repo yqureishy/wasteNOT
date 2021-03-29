@@ -39,14 +39,16 @@ router.post('/login', async (req, res) => {
                 //create a session
                 if(req.session) {
                     req.session.user = {userId: user.id}
-                    res.redirect('/profile')
+                    res.redirect('/users/profile')
                 }
                 
             } else {
+                console.log('not working')
                 res.render('login', {message: 'Incorrect email or password'})
             }
         })
     } else {
+        console.log('not working')
         res.render('login', {message: 'Incorrect email or password'})
         
 
@@ -106,6 +108,18 @@ router.post('/register', async (req, res) => {
     
 })
         
+router.get('/logout', (req, res, next) => {
+
+    if(req.session) {
+        req.session.destroy((error) => {
+            if(error) {
+                next(error)
+            }else {
+                res.redirect('/index')
+            }
+        })
+    }
+})
 
 module.exports = router
 

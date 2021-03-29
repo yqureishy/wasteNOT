@@ -3,7 +3,7 @@ const router = express.Router()
 
 // display restaurant user profile
 router.get('/profile', (req, res) => {
-    res.render('users/profile')
+    res.render('profile')
 })
 
 module.exports = router

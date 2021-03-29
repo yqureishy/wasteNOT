@@ -2,7 +2,7 @@
 
 function authenticate(req,res,next){
     if(req.session){
-        if(req.session.emailAsUsername){
+        if(req.session.user){
             next()
         }else{
             res.redirect('/login')
