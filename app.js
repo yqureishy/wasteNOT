@@ -7,7 +7,8 @@ const models = require('./models')
 const { Op } = require('sequelize')
 const router = express.Router()
 const indexRouter = require('./routes/index')
-const checkAuthorization = require('./middleware/authorization')
+const userRoutes = require('./routes/users')
+
 
 
 app.use(express.urlencoded())
@@ -21,7 +22,8 @@ app.engine('mustache',mustacheExpress())
 app.set('views','./views')
 app.set('view engine','mustache')
 app.use(express.json())
-app.use('/', checkAuthorization, indexRouter)
+app.use('/', indexRouter)
+app.use('/users', userRoutes)
 
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
@@ -73,10 +75,7 @@ app.post('/add-foodbank', (req, res) => {
     res.render('add-foodbank', {message: 'Location saved successfully.'})
   })
 
-// display restaurant user profile
-app.get('/profile', (req, res) => {
-    res.render('profile')
-})
+
 
 // add new food donation to DB
 app.post('/donation', (req, res) => {
