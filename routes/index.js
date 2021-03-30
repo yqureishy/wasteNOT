@@ -7,7 +7,7 @@ const SALT_ROUNDS = 10
 
 
 // display wasteNOT landing page
-router.get('/index', (req, res) => {
+router.get('/', (req, res) => {
     res.render('index')
 })
 
@@ -115,7 +115,7 @@ router.get('/logout', (req, res, next) => {
             if(error) {
                 next(error)
             }else {
-                res.redirect('/index')
+                res.redirect('/')
             }
         })
     }
