@@ -80,24 +80,7 @@ app.post('/add-foodbank', (req, res) => {
 
 
 
-// add new food donation to DB
-app.post('/donation', (req, res) => {
-    const itemName = req.body.itemName
-    const estimatedQty = parseInt(req.body.estimatedQty)
-    const estimatedExpiration = req.body.estimatedExpiration
-    const isReadyToEat = req.body.isReadyToEat
-    const storageTemp = req.body.storageTemp
-  
-    let foodDonation = models.FoodDonation.build({
-        itemName: itemName,			
-        estimatedQty: estimatedQty,
-        estimatedExpiration: estimatedExpiration,
-        isReadyToEat: isReadyToEat,
-        storageTemp: storageTemp,
-    })
-    foodDonation.save()  
-    res.render('profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
-})
+
 
 // start server
 app.listen(3000,()=>{
