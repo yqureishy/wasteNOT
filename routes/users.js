@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const models = require('../models')
+// const models = require('../models')
 
 
 
@@ -10,7 +10,7 @@ router.get('/profile', (req, res) => {
 })
 
 router.get('/donation', (req, res) => {
-    res.render('users/donation')
+    res.render('profile')
 })
 // add new food donation to DB
 router.post('/donation', async (req, res) => {
@@ -35,7 +35,7 @@ router.post('/donation', async (req, res) => {
         res.redirect('/users/profile')
 
     }else {
-    res.render('users/profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
+    res.redirect('/users/profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
     }
 })
 module.exports = router
