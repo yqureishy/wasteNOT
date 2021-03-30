@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-// const models = require('../models')
+const models = require('../models')
 
 
 
@@ -9,9 +9,9 @@ router.get('/profile', (req, res) => {
     res.render('profile')
 })
 
-router.get('/donation', (req, res) => {
-    res.render('profile')
-})
+// router.get('/donation', (req, res) => {
+//     res.render('profile')
+// })
 // add new food donation to DB
 router.post('/donation', async (req, res) => {
     const itemName = req.body.itemName
