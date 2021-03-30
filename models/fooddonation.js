@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      // FoodDonation.hasOne(User, {as:'donor'});
       // define association here
     }
   };
@@ -18,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     estimatedQty: DataTypes.INTEGER,
     isReadyToEat: DataTypes.BOOLEAN,
     storageTemp: DataTypes.STRING,
-    estimatedExpiration: DataTypes.STRING
+    estimatedExpiration: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'FoodDonation',
