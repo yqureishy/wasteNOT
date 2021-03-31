@@ -10,8 +10,47 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
+router.get('/all-donations', (req, res) => {
+    res.render('all-donations')
+})
+
 router.get('/login', (req,res)=>{
     res.render('admin-login')
+})
+
+router.post('/login', async (req, res) => {
+
+    let emailAsUsername = req.body.emailAsUsername
+    let password = req.body.password
+
+    let admin = await models.Admins.findOne( {
+        where: {
+            emailAsUsername: emailAsUsername
+        }
+    }) 
+    console.log(admin)
+    if (admin != null) {
+        bcrypt.compare(password, admin.password, (error, result) => {
+
+            if(result) {
+
+                //create a session
+                if(req.session) {
+                    req.session.admin = {adminId: admin.id}
+                    res.redirect('/all-donations')
+                }
+                
+            } else {
+                console.log('not working')
+                res.render('admin-login', {message: 'Incorrect email or password'})
+            }
+        })
+    } else {
+        console.log('admin-is-null')
+        res.render('admin-login', {message: 'Incorrect email or password'})
+        
+
+    }
 })
 // add new admin user
 router.post('/add-admin', async (req, res) => {
@@ -48,10 +87,6 @@ router.post('/add-admin', async (req, res) => {
     } else{
         res.render('add-admin',{message:"Username already exists."})
     }
-
-
-
-
 
 })
 
