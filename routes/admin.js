@@ -10,6 +10,9 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
+router.get('/login', (req,res)=>{
+    res.render('admin-login')
+})
 // add new admin user
 router.post('/add-admin', async (req, res) => {
 
@@ -37,7 +40,7 @@ router.post('/add-admin', async (req, res) => {
         let savedAdmin = await newAdmin.save()
 
     if(savedAdmin != null) {
-        res.render('login', {newAdminMessage: 'New admin saved successfully!' })
+        res.render('admin-login', {newAdminMessage: 'New admin saved successfully!' })
     }else{
         res.render('add-admin',{message:"Username already exists."})
     }
@@ -45,6 +48,10 @@ router.post('/add-admin', async (req, res) => {
     } else{
         res.render('add-admin',{message:"Username already exists."})
     }
+
+
+
+
 
 })
 
