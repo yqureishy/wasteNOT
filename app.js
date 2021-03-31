@@ -78,14 +78,7 @@ app.post('/add-foodbank', (req, res) => {
   })
 
 
-// display admin page to see all donations
-app.get('/all-donations', (req, res) => {   
-    // res.render('all-donations')
-    models.FoodDonation.findAll({})
-    .then(donations => {
-        res.render('all-donations', {donations: donations})
-    })
-})
+
     
 
 
