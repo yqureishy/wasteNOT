@@ -104,6 +104,8 @@ router.get('/all-donations', (req, res) => {
         res.render('all-donations', {donations: donations})
     })
 })
+
+
 // delete a donation
 router.post('/delete-donation', (req, res) => {
 
