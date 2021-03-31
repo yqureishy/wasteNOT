@@ -10,6 +10,10 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
+router.get('/login', (req,res)=>{
+    res.render('admin-login')
+})
+
 
 
 
