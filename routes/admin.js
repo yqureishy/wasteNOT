@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
                 //create a session
                 if(req.session) {
                     req.session.admin = {adminId: admin.id}
-                    res.redirect('/all-donations')
+                    res.redirect('/admin/all-donations')
                 }
                 
             } else {
@@ -97,9 +97,10 @@ router.get('/all-donations', (req, res) => {
         include:[
         {
             model: models.User,
-            as: user
+            as: 'user'
         }
-    ]})
+    ]
+})
     .then(donations => {
         res.render('all-donations', {donations: donations})
     })
