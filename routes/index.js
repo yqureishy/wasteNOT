@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
 
 // add new restaurant user
 router.post('/register', async (req, res) => {
-
+    
     const emailAsUsername = req.body.emailAsUsername;
     let password = req.body.password
     const firstName = req.body.firstName
@@ -73,14 +73,14 @@ router.post('/register', async (req, res) => {
 
     const salt = await bcrypt.genSalt(10)
     let hashedPassword = await bcrypt.hash(password, salt)
-    let registeredUser = models.User.findOne({
+    let registeredUser = await models.User.findOne({
         where:{
             emailAsUsername: emailAsUsername
         }
     })
     
-    if(registeredUser == null){
-        
+    if(!registeredUser){
+       
     let newUser = models.User.build({
         emailAsUsername: emailAsUsername,           
         password: hashedPassword,
@@ -95,14 +95,15 @@ router.post('/register', async (req, res) => {
         website: website
     })
 
-    let savedUser = await registeredUser.save()
+    let savedUser = await newUser.save()
+
     if(savedUser != null) {
-        res.redirect('/login', {newUserMessage: 'New restaurant partner saved successfully!'})
+        res.render('login', {newUserMessage: 'New restaurant partner saved successfully!' })
     }else{
         res.render('register',{message:"Username already exists."})
     }
 
-    } else {
+    } else{
         res.render('register',{message:"Username already exists."})
     }
     
