@@ -23,7 +23,7 @@ router.post('/donation', async (req, res) => {
   
   
 
-    let foodDonation = models.Fooddonation.build({
+    let foodDonation = await models.FoodDonation.build({
         itemName: itemName,
 
         estimatedQty: estimatedQty,
@@ -35,10 +35,10 @@ router.post('/donation', async (req, res) => {
 
     let persistedProduct = await foodDonation.save()
     if(persistedProduct != null) {
-        res.redirect('/users/profile')
+        res.render('profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
 
     }else {
-    res.redirect('/users/profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
+    res.render('profile', {message: 'Thank you for your donation! One of our volunteers will arrive shortly to pick it up.'})
     }
 })
 
