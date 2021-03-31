@@ -28,27 +28,29 @@
 	<br><br>
 		<!-- Photo by Joel Muniz on unsplash.com -->
 		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
-		<h1>Administration: New Food Bank</h1>
-		<h3>Add a new food distribution location to the network.</h3>
-        <form class="nice-form" method="POST" action="add-foodbank">
-        <input type="text" placeholder="Enter location name" name="name" /><br><br>
-        <input type="text" placeholder="Enter address" name="address" /><br><br>
-        <input type="text" placeholder="Enter city" name="city" /restaurants><br><br>
-        <input type="text" placeholder="Enter state" name="state" /><br><br>
-        <input type="text" placeholder="Enter zip" name="zip" /><br><br>
-        <input type="text" placeholder="Enter phone" name="phone" /><br><br>
-        <button class="btn">Save Location</button>
-        </form>
-        <br><br>
-        <h3>{{message}}<h3>
-        <br>
+		<h1>Administration: View Donations</h1>
+		<h3>See all donations to plan today's pickup.</h3>
+        <a href="#donations" class="btn">Donations</a>
 
+        
 	</section>
 
 
 	<section class="our-work">
-		<h3 class="title">Maybe Something Goes Here</h3>
-		<p>Maybe not. The functionality of this page is fairly limited.</p>
+		<h3 class="title" id="donations">Donations</h3>
+		<p>{{#donations}}
+        
+        <ul id="donation-list" style="text-align: center">
+		<li>
+		<b>Item: {{itemName}}</b><br>
+		Qty: {{estimatedQty}}<br>
+		Storage Temp: {{storageTemp}}<br>
+        Donated by: {{userId}}<br><br><br>
+		</li>
+        </ul>
+        {{/donations}}
+        <br>
+</p>
 		<hr>
 
 		<ul class="grid">

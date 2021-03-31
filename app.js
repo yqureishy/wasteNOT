@@ -49,7 +49,7 @@ app.get('/locations', (req, res) => {
 
 
 // display admin page to add a foodbank
-app.get('/add-foodbank', authenticate, (req, res) => {
+app.get('/add-foodbank', (req, res) => {
     res.render('add-foodbank')
 })
 
@@ -72,10 +72,19 @@ app.post('/add-foodbank', (req, res) => {
       phone: phone
     })
     foodbank.save()  
-    res.render('add-foodbank', {message: 'Location saved successfully.'})
+    res.render('add-foodbank', {message: 'Location saved successfully!'})
   })
 
 
+// display admin page to see all donations
+app.get('/all-donations', (req, res) => {   
+    // res.render('all-donations')
+    models.FoodDonation.findAll({})
+    .then(donations => {
+        res.render('all-donations', {donations: donations})
+    })
+})
+    
 
 
 
@@ -83,6 +92,6 @@ app.post('/add-foodbank', (req, res) => {
 
 
 // start server
-app.listen(3000,()=>{
+app.listen(5000,()=>{
     console.log("Server is running...")
 })
