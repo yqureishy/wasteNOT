@@ -42,11 +42,17 @@
         
         <ul id="donation-list" style="text-align: center">
 		<li>
+
+		<form method="POST" action="/admin/delete-donation">
 		<b>Item: {{itemName}}</b><br>
 		Estimated Quantity: {{estimatedQty}}<br>
 		Storage Temp: {{storageTemp}}<br>
         Donated on: {{createdAt}}<br>
         Donated by: {{userId}}<br><br>
+
+		<input type="hidden" value='{{id}}' name="donationId"/>
+		<button>Delete</button>
+		</form>
 
         <br>
 		</li>

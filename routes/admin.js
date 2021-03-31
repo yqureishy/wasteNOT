@@ -90,8 +90,19 @@ router.post('/add-admin', async (req, res) => {
 
 })
 
+// delete a donation
+router.post('/delete-donation', (req, res) => {
 
+    const donationId = req.body.donationId
 
+    models.FoodDonation.destroy({
+        where: {
+            id: donationId
+        }
+    }).then(deletedFoodDonation => {
+        res.redirect('/all-donations')
+    })
+})
 
 
 
