@@ -8,6 +8,7 @@ const { Op } = require('sequelize')
 const router = express.Router()
 const indexRouter = require('./routes/index')
 const userRoutes = require('./routes/users')
+const adminRoutes = require('./routes/admin')
 const authenticate = require('./middlewares/authenticate')
 
 
@@ -25,6 +26,7 @@ app.use(express.json())
 
 app.use('/users', authenticate, userRoutes)
 app.use('/', indexRouter)
+app.use('/admin', adminRoutes)
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {

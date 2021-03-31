@@ -125,10 +125,6 @@ router.get('/logout', (req, res, next) => {
 
 
 
-// display add-admin page
-router.get('/add-admin', (req, res) => {
-    res.render('add-admin')
-})
 
 
 
