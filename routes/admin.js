@@ -10,9 +10,9 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
-router.get('/all-donations', (req, res) => {
-    res.render('all-donations')
-})
+// router.get('/all-donations', (req, res) => {
+//     res.render('all-donations')
+// })
 
 router.get('/login', (req,res)=>{
     res.render('admin-login')
@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
                 //create a session
                 if(req.session) {
                     req.session.admin = {adminId: admin.id}
-                    res.redirect('/all-donations')
+                    res.redirect('/admin/all-donations')
                 }
                 
             } else {
@@ -89,6 +89,23 @@ router.post('/add-admin', async (req, res) => {
     }
 
 })
+
+// display admin page to see all donations
+router.get('/all-donations', (req, res) => {   
+    // res.render('all-donations')
+    models.FoodDonation.findAll({
+        include:[
+        {
+            model: models.User,
+            as: 'user'
+        }
+    ]
+})
+    .then(donations => {
+        res.render('all-donations', {donations: donations})
+    })
+})
+
 
 // delete a donation
 router.post('/delete-donation', (req, res) => {

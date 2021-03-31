@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 
@@ -27,7 +27,7 @@
 	<section class="hero">
 	<br><br>
 		<!-- Photo by Joel Muniz on unsplash.com -->
-		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
+		<div class="background-image" style="background-image: url(/img/foodbank.jpg);"></div>
 		<h1>Administration: View Donations</h1>
 		<h3>See all donations to plan today's pickup.</h3>
         <a href="#donations" class="btn">Donations</a>
@@ -44,11 +44,18 @@
 		<li>
 
 		<form method="POST" action="/admin/delete-donation">
-		<b>Item: {{itemName}}</b><br>
-		Estimated Quantity: {{estimatedQty}}<br>
-		Storage Temp: {{storageTemp}}<br>
-        Donated on: {{createdAt}}<br>
-        Donated by: {{userId}}<br><br>
+		<b><u>Item: {{itemName}}</u></b><br>
+		<b>Estimated Quantity:</b> {{estimatedQty}}<br>
+		<b>Storage Temp:</b> {{storageTemp}}<br>
+        <b>Donated on:</b> {{createdAt}}<br>
+        
+		{{#user}}
+		<b>Donated by:</b> {{restaurantName}}<br>
+		<b>Address:</b> {{restaurantStreetAddress}}<br>
+			{{city}},
+			{{state}}
+			{{zip}}
+		{{/user}}
 
 		<input type="hidden" value='{{id}}' name="donationId"/>
 		<button>Delete</button>
@@ -63,10 +70,10 @@
 		<hr>
 
 		<ul class="grid">
-			<li class="small" style="background-image: url(img/coast.jpg);"></li>
-			<li class="large" style="background-image: url(img/island.jpg);"></li>
-			<li class="large" style="background-image: url(img/balloon.jpg);"></li>
-			<li class="small" style="background-image: url(img/mountain.jpg);"></li>
+			<li class="small" style="background-image: url(/img/coast.jpg);"></li>
+			<li class="large" style="background-image: url(/img/island.jpg);"></li>
+			<li class="large" style="background-image: url(/img/balloon.jpg);"></li>
+			<li class="small" style="background-image: url(/img/mountain.jpg);"></li>
 		</div>
 	</section>
 	
