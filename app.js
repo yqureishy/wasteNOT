@@ -93,6 +93,6 @@ app.get('/all-donations', (req, res) => {
 
 
 // start server
-app.listen(3333,()=>{
+app.listen(3000,()=>{
     console.log("Server is running...")
 })
