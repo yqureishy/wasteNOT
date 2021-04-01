@@ -17,7 +17,7 @@ app.use(express.urlencoded())
 app.use(session({
     secret: "keyboard-cat",
     resave: true,
-    saveUnitialized: false,
+    saveUninitialized: false,
 }))
 app.use(express.static('static'))
 app.engine('mustache',mustacheExpress())
