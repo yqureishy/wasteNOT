@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     isReadyToEat: DataTypes.BOOLEAN,
     storageTemp: DataTypes.STRING,
     estimatedExpiration: DataTypes.STRING,
+    isDonationComplete: DataTypes.BOOLEAN,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
