@@ -58,8 +58,7 @@ router.get('/all-donations', (req, res) => {
             as: 'user'
         }
     ]
-})
-    .then(donations => {
+}).then((donations) => {
         res.render('all-donations', {donations: donations})
     })
 })
