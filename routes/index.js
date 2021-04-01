@@ -179,21 +179,19 @@ console.log("admin login")
     }
 })
 
-// display admin page to see all donations
-router.get('/all-donations', (req, res) => {   
-    models.FoodDonation.findAll({
-        include:[
-        {
-            model: models.User,
-            as: 'user'
-        }
-    ]
-})
-    .then(donations => {
-        res.render('all-donations', {donations: donations})
-    })
-})
 
+router.get('/admin-logout', (req, res, next) => {
+
+    if(req.session) {
+        req.session.destroy((error) => {
+            if(error) {
+                next(error)
+            }else {
+                res.redirect('/admin-login')
+            }
+        })
+    }
+})
 
 
 
