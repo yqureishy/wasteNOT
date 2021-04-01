@@ -144,7 +144,7 @@ router.get('/admin-login', (req,res)=>{
 })
 
 router.post('/admin-login', async (req, res) => {
-
+console.log("admin login")
     let emailAsUsername = req.body.emailAsUsername
     let password = req.body.password
 
@@ -158,12 +158,13 @@ router.post('/admin-login', async (req, res) => {
         bcrypt.compare(password, admin.password, (error, result) => {
 
             if(result) {
-
+                console.log("admin authenticated")
                 //create a session
-                if(req.session) {
-                    req.session.admin = {adminId: admin.id}
+                if(req.session) {console.log("session exists")
+                    req.session.user = {userId: admin.id}
                     res.redirect('/admin/all-donations')
                 }
+                
                 
             } else {
                 console.log('not working')
