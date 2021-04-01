@@ -49,20 +49,6 @@ router.post('/add-admin', async (req, res) => {
 })
 
 // display admin page to see all donations
-// router.get('/all-donations', (req, res) => {   
-    
-//     models.FoodDonation.findAll({
-//         include:[
-//         {
-//             model: models.User,
-//             as: 'user'
-//         }
-//     ]
-// }).then((donations) => {
-//         res.render('all-donations', {donations: donations})
-//     })
-// })
-
 router.get('/all-donations', (req, res) => {   
     // res.render('all-donations')
         models.FoodDonation.findAll({
