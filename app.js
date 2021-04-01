@@ -29,64 +29,6 @@ app.use('/users', authenticateUser, userRoutes)
 app.use('/', indexRouter)
 app.use('/admin', authenticateAdmin, adminRoutes)
 
-// display food bank 'about us' landing page w/restaurant "Thank You" list
- app.get('/foodbank', (req, res) => {
-    models.User.findAll({})
-    .then(users => {
-        res.render('foodbank', {users: users})
-    })
-})
-
-// display foodbank locations page
-app.get('/locations', (req, res) => {
-    models.Foodbank.findAll({})
-    .then(foodbanks => {
-        res.render('locations', {foodbanks: foodbanks})
-    })
-})
-
-
-
-
-
-
-
-// display admin page to add a foodbank
-app.get('/add-foodbank', (req, res) => {
-    res.render('add-foodbank')
-})
-
-
-// add new food bank
-app.post('/add-foodbank', (req, res) => {
-    const name = req.body.name
-    const address = req.body.address
-    const city = req.body.city
-    const state = req.body.state
-    const zip = req.body.zip
-    const phone = req.body.phone
-  
-    let foodbank = models.Foodbank.build({
-      name: name,			
-      address: address,
-      city: city,
-      state: state,
-      zip: zip,
-      phone: phone
-    })
-    foodbank.save()  
-    res.render('add-foodbank', {message: 'Location saved successfully!'})
-  })
-
-
-
-    
-
-
-
-
-
-
 
 // start server
 app.listen(3000,()=>{
