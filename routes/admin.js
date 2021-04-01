@@ -10,9 +10,34 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
-// router.get('/all-donations', (req, res) => {
-//     res.render('all-donations')
-// })
+//display add-foodbank page
+router.get('/add-foodbank', (req, res) => {
+    res.render('add-foodbank')
+})
+
+router.post('/add-foodbank', async (req, res) => {
+    const name = req.body.name
+    const address = req.body.address
+    const city = req.body.city
+    const state = req.body.state
+    const zip = req.body.zip
+    const phone = req.body.phone
+    const hours = req.body.hours
+    
+    let foodbank = models.Foodbank.build({
+        name: name,
+        address: address,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone,
+        hours: hours
+    })
+
+    foodbank.save()
+    res.render('add-foodbank', {message: 'New food bank location has been saved.'})
+})
+
 
 router.get('/login', (req,res)=>{
     res.render('admin-login')
@@ -42,12 +67,12 @@ router.post('/login', async (req, res) => {
                 
             } else {
                 console.log('not working')
-                res.render('admin-login', {message: 'Incorrect email or password'})
+                res.render('admin-login', {message: 'Incorrect email or password.'})
             }
         })
     } else {
         console.log('admin-is-null')
-        res.render('admin-login', {message: 'Incorrect email or password'})
+        res.render('admin-login', {message: 'Incorrect email or password.'})
         
 
     }

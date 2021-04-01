@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 
@@ -19,7 +19,8 @@
 		<h2><a href="#" class="header-links"><img src='/img/wasteNOT_Logo.png' width="200"></a></h2>
 		<nav>
 			<li><a href="/" class="header-links">wasteNOT</a></li>
-			<li><a href="#" class="header-links">Locations</a></li>
+			<li><a href="/admin/add-admin" class="header-links">Add New Admin</a></li>
+			<li><a href="/admin/all-donations" class="header-links">Donations</a></li>
 		</nav>
 	</header>
 
@@ -27,9 +28,10 @@
 	<section class="hero">
 	<br><br>
 		<!-- Photo by Joel Muniz on unsplash.com -->
-		<div class="background-image" style="background-image: url(img/foodbank.jpg);"></div>
+		<div class="background-image" style="background-image: url(/img/foodbank.jpg);"></div>
 		<h1>Administration: New Food Bank</h1>
-		<h3>Add a new food distribution location to the network.</h3>
+		<h3>Add a new food distribution location to the network.</h3><br>
+		<h4><i>{{message}}</i></h4><br><br>
         <form class="nice-form" method="POST" action="add-foodbank">
         <input type="text" placeholder="Enter location name" name="name" /><br><br>
         <input type="text" placeholder="Enter address" name="address" /><br><br>
@@ -37,33 +39,23 @@
         <input type="text" placeholder="Enter state" name="state" /><br><br>
         <input type="text" placeholder="Enter zip" name="zip" /><br><br>
         <input type="text" placeholder="Enter phone" name="phone" /><br><br>
+		<input type="text" placeholder="Enter operating hours" name="hours" /><br><br>
         <button class="btn">Save Location</button>
         </form>
         <br><br>
-        <h3>{{message}}<h3>
-        <br>
 
 	</section>
 
 
 	<section class="our-work">
-		<h3 class="title">Maybe Something Goes Here</h3>
-		<p>Maybe not. The functionality of this page is fairly limited.</p>
-		<hr>
-
 		<ul class="grid">
-			<li class="small" style="background-image: url(img/coast.jpg);"></li>
-			<li class="large" style="background-image: url(img/island.jpg);"></li>
-			<li class="large" style="background-image: url(img/balloon.jpg);"></li>
-			<li class="small" style="background-image: url(img/mountain.jpg);"></li>
+			<li class="small" style="background-image: url(/img/coast.jpg);"></li>
+			<li class="large" style="background-image: url(/img/island.jpg);"></li>
+			<li class="large" style="background-image: url(/img/balloon.jpg);"></li>
+			<li class="small" style="background-image: url(/img/mountain.jpg);"></li>
 		</div>
 	</section>
 	
-
-	<section class="features">
-		<h3 class="title">Features and services</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id felis et ipsum bibendum ultrices. Morbi vitae pulvinar velit. Sed aliquam dictum sapien, id sagittis augue malesuada eu.</p>
-	</section>
 	<footer>
 	<p>Site created in 2021 by Nicole Aldurien, Hao Dam, and Younus Qureishy.</p>
 	</footer>

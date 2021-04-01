@@ -44,12 +44,12 @@ router.post('/login', async (req, res) => {
                 
             } else {
                 console.log('not working')
-                res.render('login', {message: 'Incorrect email or password'})
+                res.render('login', {message: 'Incorrect email or password.'})
             }
         })
     } else {
         console.log('not working')
-        res.render('login', {message: 'Incorrect email or password'})
+        res.render('login', {message: 'Incorrect email or password.'})
         
 
     }
@@ -122,9 +122,21 @@ router.get('/logout', (req, res, next) => {
     }
 })
 
+// display foodbank "about us page"
+router.get('/foodbank', (req, res) => {
+    models.User.findAll({})
+    .then(users => {
+        res.render('foodbank', {users: users})
+    })
+})
 
-
-
+// display foodbank locations page
+router.get('/locations', (req, res) => {
+    models.Foodbank.findAll({})
+    .then(foodbanks => {
+        res.render('locations', {foodbanks: foodbanks})
+    })
+})
 
 
 

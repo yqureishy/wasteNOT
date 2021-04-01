@@ -20,9 +20,6 @@ router.post('/donation', async (req, res) => {
     const storageTemp = req.body.storageTemp
     const userId = req.session.user.userId
 
-  
-  
-
     let foodDonation = await models.FoodDonation.build({
         itemName: itemName,
 
