@@ -11,7 +11,7 @@ const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin')
 const authenticateAdmin = require('./middlewares/authenticateAdmin')
 const authenticateUser = require('./middlewares/authenticateUser')
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 4000
 
 app.use(express.urlencoded())
 app.use(session({
@@ -31,6 +31,6 @@ app.use('/admin', authenticateAdmin, adminRoutes)
 
 
 // start server
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log("Server is running...")
 })
