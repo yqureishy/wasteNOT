@@ -9,7 +9,8 @@ const router = express.Router()
 const indexRouter = require('./routes/index')
 const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin')
-const authenticate = require('./middlewares/authenticate')
+const authenticateAdmin = require('./middlewares/authenticateAdmin')
+const authenticateUser = require('./middlewares/authenticateUser')
 
 
 app.use(express.urlencoded())
@@ -24,9 +25,9 @@ app.set('views','./views')
 app.set('view engine','mustache')
 app.use(express.json())
 
-app.use('/users', authenticate, userRoutes)
+app.use('/users', authenticateUser, userRoutes)
 app.use('/', indexRouter)
-app.use('/admin', authenticate, adminRoutes)
+app.use('/admin', authenticateAdmin, adminRoutes)
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {
