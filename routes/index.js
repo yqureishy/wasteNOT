@@ -122,7 +122,44 @@ router.get('/logout', (req, res, next) => {
     }
 })
 
+router.get('/admin-login', (req,res)=>{
+    res.render('admin-login')
+})
 
+router.post('/admin-login', async (req, res) => {
+
+    let emailAsUsername = req.body.emailAsUsername
+    let password = req.body.password
+
+    let admin = await models.Admins.findOne( {
+        where: {
+            emailAsUsername: emailAsUsername
+        }
+    }) 
+    console.log(admin)
+    if (admin != null) {
+        bcrypt.compare(password, admin.password, (error, result) => {
+
+            if(result) {
+
+                //create a session
+                if(req.session) {
+                    req.session.admin = {adminId: admin.id}
+                    res.redirect('/admin/all-donations')
+                }
+                
+            } else {
+                console.log('not working')
+                res.render('admin-login', {message: 'Incorrect email or password'})
+            }
+        })
+    } else {
+        console.log('admin-is-null')
+        res.render('admin-login', {message: 'Incorrect email or password'})
+        
+
+    }
+})
 
 
 

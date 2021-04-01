@@ -26,7 +26,7 @@ app.use(express.json())
 
 app.use('/users', authenticate, userRoutes)
 app.use('/', indexRouter)
-app.use('/admin', adminRoutes)
+app.use('/admin', authenticate, adminRoutes)
 
 // display food bank 'about us' landing page w/restaurant "Thank You" list
  app.get('/foodbank', (req, res) => {
