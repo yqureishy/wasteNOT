@@ -55,14 +55,13 @@
 		<b>Address:</b> {{restaurantStreetAddress}}<br>
 			{{city}},
 			{{state}}
-			{{zip}}
+			{{zip}}<br>
 		{{/user}}
 
-		<input type="hidden" value='{{id}}' name="donationId"/>
-		<button>Delete</button>
+		<input type="hidden" value='{{id}}' name="donationId"/><br>
+		<button class="btn">Delete Donation After Pickup</button>
 		</form>
-
-        <br>
+		<br><br>
 		</li>
         </ul>
         {{/donations}}

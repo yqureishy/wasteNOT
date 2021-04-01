@@ -98,7 +98,7 @@ router.post('/register', async (req, res) => {
     let savedUser = await newUser.save()
 
     if(savedUser != null) {
-        res.render('login', {newUserMessage: 'New restaurant partner saved successfully!' })
+        res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
     }else{
         res.render('register',{message:"Username already exists."})
     }
@@ -160,23 +160,38 @@ console.log("admin login")
             if(result) {
                 console.log("admin authenticated")
                 //create a session
-                if(req.session) {console.log("session exists")
+                if(req.session) {
+                    console.log("session exists")
                     req.session.user = {userId: admin.id}
                     res.redirect('/admin/all-donations')
                 }
-                
-                
+
             } else {
                 console.log('not working')
-                res.render('admin-login', {message: 'Incorrect email or password'})
+                res.render('admin-login', {message: 'Incorrect email or password.'})
             }
         })
     } else {
         console.log('admin-is-null')
-        res.render('admin-login', {message: 'Incorrect email or password'})
+        res.render('admin-login', {message: 'Incorrect email or password.'})
         
 
     }
+})
+
+// display admin page to see all donations
+router.get('/all-donations', (req, res) => {   
+    models.FoodDonation.findAll({
+        include:[
+        {
+            model: models.User,
+            as: 'user'
+        }
+    ]
+})
+    .then(donations => {
+        res.render('all-donations', {donations: donations})
+    })
 })
 
 
