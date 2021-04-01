@@ -34,6 +34,16 @@
 	padding: 18px 42px;
 }
 
+#logo {
+	width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+	#logo {
+		width: 90%
+	}
+  }
+
 /*-------------
  	General
 -------------*/
@@ -41,7 +51,7 @@
 *{
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing: content-box;
 }
 
 html{

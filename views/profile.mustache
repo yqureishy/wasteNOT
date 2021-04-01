@@ -40,9 +40,10 @@
 		<h3 class="title" id="getstarted">Enter A New Donation</h3>
 		 <form class="nice-form" method="POST" action="/users/donation">
 		<input type="text" placeholder="Name of food item" name="itemName" />
-        Enter estimated quantity:
-		<input type="number" min="0" name="estimatedQty" />
-        <input type="text" placeholder="Estimated expiration" name="estimatedExpiration" /><br><br>
+        
+		<input type="number" placeholder="Estimated quantity" min="0" name="estimatedQty" /><br><br>
+		Select estimated expiration date:<br>
+        <input type="date" name="estimatedExpiration" /><br><br>
 		Is this item ready-to-eat without further preparation beyond reheating?<br> <i>(Don't worry, we'll happily take it either way!)</i><br><br>
         <input type="radio" id="yes" name="isReadyToEat" value="true">
         <label for="yes">Yes</label><br>
@@ -57,20 +58,22 @@
         <label for="frozen">Frozen</label><br><br>
         <button class="btn">Save Donation</button>
         </form>
-        <br>
-
-        <br>
-		<hr>
         <br><br>
-		<h3 class="title" id="see-donations"><a href='/users/past-donations'>See All Past Donations</a></h3>
-        
+		<hr>
+        <br><br><br><br>
+		<h3 class="title" id="see-donations">See All Past Donations</h3>
+        <a href='/users/past-donations' class="btn">Donations</a>
+		<br><br><br><br>
+		<hr>
+        <br><br><br><br>
+		</div>
         <ul class="grid">
 			<li class="small" style="background-image: url(/img/coast.jpg);"></li>
 			<li class="large" style="background-image: url(/img/island.jpg);"></li>
 			<li class="large" style="background-image: url(/img/balloon.jpg);"></li>
 			<li class="small" style="background-image: url(/img/mountain.jpg);"></li>
 		</ul>
-		</div>
+
 	</section>
 	
 
