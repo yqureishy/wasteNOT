@@ -49,30 +49,41 @@ router.post('/add-admin', async (req, res) => {
 })
 
 // display admin page to see all donations
+// router.get('/all-donations', (req, res) => {   
+    
+//     models.FoodDonation.findAll({
+//         include:[
+//         {
+//             model: models.User,
+//             as: 'user'
+//         }
+//     ]
+// }).then((donations) => {
+//         res.render('all-donations', {donations: donations})
+//     })
+// })
+
 router.get('/all-donations', (req, res) => {   
     // res.render('all-donations')
-    models.FoodDonation.findAll({
-        include:[
-        {
-            model: models.User,
-            as: 'user'
-        }
-    ]
+        models.FoodDonation.findAll({
+
+        where: {isDonationComplete: 'false' }
+
 }).then((donations) => {
         res.render('all-donations', {donations: donations})
     })
 })
 
 
-
-
-
-// delete a donation
+// "delete" a donation
 router.post('/delete-donation', (req, res) => {
 
     const donationId = req.body.donationId
 
-    models.FoodDonation.destroy({
+    models.FoodDonation.update({
+
+        isDonationComplete:'true'},
+        {
         where: {
             id: donationId
         }
