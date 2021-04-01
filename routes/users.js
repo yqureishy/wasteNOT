@@ -86,4 +86,15 @@ router.post('/donation', async (req, res) => {
     }
 })
 
+router.get('/past-donations', (req,res)=>{
+    console.log(req.session)
+    models.FoodDonation.findAll({
+        where:{userId: req.session.user.userId}
+
+    }).then((donations)=>{
+        res.render('past-donations', {donations:donations})
+    }
+   
+)})
+
 module.exports = router
