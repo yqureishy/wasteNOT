@@ -40,9 +40,10 @@
 		<h3 class="title" id="getstarted">Enter A New Donation</h3>
 		 <form class="nice-form" method="POST" action="/users/donation">
 		<input type="text" placeholder="Name of food item" name="itemName" />
-        Enter estimated quantity:
-		<input type="number" min="0" name="estimatedQty" />
-        <input type="text" placeholder="Estimated expiration" name="estimatedExpiration" /><br><br>
+        
+		<input type="number" placeholder="Estimated quantity" min="0" name="estimatedQty" />
+		Choose estimated expiration: 
+        <input type="date" placeholder="Estimated expiration" name="estimatedExpiration" /><br><br>
 		Is this item ready-to-eat without further preparation beyond reheating?<br> <i>(Don't worry, we'll happily take it either way!)</i><br><br>
         <input type="radio" id="yes" name="isReadyToEat" value="true">
         <label for="yes">Yes</label><br>
