@@ -98,7 +98,7 @@ router.post('/register', async (req, res) => {
     let savedUser = await newUser.save()
 
     if(savedUser != null) {
-        res.render('login', {newUserMessage: 'New restaurant partner saved successfully!' })
+        res.render('login', {newUserMessage: 'New restaurant partner saved successfully!'})
     }else{
         res.render('register',{message:"Username already exists."})
     }
@@ -162,9 +162,10 @@ router.post('/admin-login', async (req, res) => {
                 //create a session
                 if(req.session) {
                     req.session.admin = {adminId: admin.id}
+                    console.log(req.session.admin)
                     res.redirect('/admin/all-donations')
                 }
-                
+
             } else {
                 console.log('not working')
                 res.render('admin-login', {message: 'Incorrect email or password.'})
