@@ -31,6 +31,6 @@ app.use('/admin', authenticateAdmin, adminRoutes)
 
 
 // start server
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log("Server is running...")
 })
