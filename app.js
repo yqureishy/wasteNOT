@@ -11,7 +11,7 @@ const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin')
 const authenticateAdmin = require('./middlewares/authenticateAdmin')
 const authenticateUser = require('./middlewares/authenticateUser')
-
+const PORT = process.env.PORT || 8080
 
 app.use(express.urlencoded())
 app.use(session({
