@@ -77,7 +77,7 @@ router.post('/delete-donation', (req, res) => {
             id: donationId
         }
     }).then(deletedFoodDonation => {
-        res.redirect('/all-donations')
+        res.redirect('/admin/all-donations')
     })
 })
 
