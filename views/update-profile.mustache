@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>wasteNOT</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body>
+
+	<header>
+		<h2><a href="/" class="header-links"><img src='/img/wasteNOT_Logo.png' width="200"></a></h2>
+		<nav>
+			<li><a href="/" class="header-links">wasteNOT</a></li>
+			<li><a href="/login" class="header-links">Login</a></li>
+		</nav>
+	</header>
+
+
+	<section class="hero">
+	<br><br>
+		<!-- Photo by Joel Muniz on unsplash.com -->
+		<div class="background-image" style="background-image: url(/img/foodbank.jpg);"></div>
+		<h1>Update Profile</h1>
+		{{#users}}
+        <form class="nice-form" method="POST" action="/users/update-profile/{{id}}">
+		<input type="text" placeholder="Email" name="emailAsUsername" value="{{emailAsUsername}}"/><br>
+		(Your email will serve as your username.)<br><br>
+		
+		<input type="text" placeholder="First name" name="firstName" value="{{firstName}}"/>
+        <input type="text" placeholder="Last name" name="lastName" value="{{lastName}}"/><br><br>
+		<input type="text" placeholder="Restaurant name" name="restaurantName" value="{{restaurantName}}" />
+        <input type="text" placeholder="Restaurant address" name="restaurantStreetAddress" value="{{restaurantStreetAddress}}" /><br><br>
+        <input type="text" placeholder="City" name="city" value="{{city}}" />
+        <input type="text" placeholder="State" name="state" value="{{state}}"/>
+        <input type="text" placeholder="Zip" name="zip" value="{{zip}}"/><br><br>
+        <input type="text" placeholder="Phone number" name="phone" value="{{phone}}" /><br><br>
+		<input type="text" placeholder="Restaurant website" name="website" value="{{website}}"/><br><br>
+        <button class="btn">Update</button>
+        </form>
+        {{/users}}
+        <br>
+        <h3>{{message}}<h3>
+        <br>
+	</section>
+
+	<section class="our-work">
+		<h3 class="title">Maybe Something Goes Here</h3>
+		<p>Maybe not. The functionality of this page is fairly limited.</p>
+</section>
+	<footer>
+	<p>Site created in 2021 by Younus Qureishy, Hao Dam, and Nicole Aldurien.</p>
+	</footer></body>
+
+</html>
