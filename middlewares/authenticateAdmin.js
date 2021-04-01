@@ -1,10 +1,10 @@
 
 function authenticateAdmin(req,res,next){
     if(req.session){
-        if(req.session.user){
+        if(req.session.admin){
             res.locals.adminId = req.session.admin.adminId
             next()
-        }else{
+        } else{
             res.redirect('/admin-login')
         }
     }else {
