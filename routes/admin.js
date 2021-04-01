@@ -10,11 +10,6 @@ router.get('/add-admin', (req, res) => {
     res.render('add-admin')
 })
 
-// router.get('/all-donations', (req, res) => {
-//     res.render('all-donations')
-// })
-
-
 // add new admin user
 router.post('/add-admin', async (req, res) => {
 
@@ -84,7 +79,34 @@ router.post('/delete-donation', (req, res) => {
     })
 })
 
+// display add-foodbank page
+router.get('/add-foodbank', (req, res) => {
+    res.render('add-foodbank')
+})
 
+// add a foodbank
+router.post('/add-foodbank', async (req, res) => {
+    const name = req.body.name
+    const address = req.body.address
+    const city = req.body.city
+    const state = req.body.state
+    const zip = req.body.zip
+    const phone = req.body.phone
+    const hours = req.body.hours
+    
+    let foodbank = models.Foodbank.build({
+        name: name,
+        address: address,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone,
+        hours: hours
+    })
+
+    foodbank.save()
+    res.render('add-foodbank', {message: 'New food bank location has been saved.'})
+})
 
 
 module.exports = router
