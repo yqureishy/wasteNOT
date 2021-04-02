@@ -37,10 +37,12 @@ Node.js, Express.js, Javascript, Mustache, HTML/CSS, Heroku, ElephantSQL
 
 
 
+
 * **Screenshots of Admin Pages:**
 
 
 ![](https://github.com/nicolealdurien/wasteNOT/blob/master/static/img/adminpages.png?raw=true)
+
 
 
 
