@@ -66,8 +66,14 @@ router.post('/add-admin', async (req, res) => {
 router.get('/all-donations', (req, res) => {   
     // res.render('all-donations')
         models.FoodDonation.findAll({
-
-        where: {isDonationComplete: 'false' }
+            where: {isDonationComplete: 'false' },
+            include:[
+                {
+                    model: models.User,
+                     as: 'user'
+                }
+            
+            ]
 
 }).then((donations) => {
         res.render('all-donations', {donations: donations})
