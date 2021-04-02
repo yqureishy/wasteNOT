@@ -23,7 +23,7 @@ https://wastenotorg.herokuapp.com
 
 
 * **Languages/Tools Used:**
-Javascript, Mustache, HTML/CSS, Heroku
+Node.js, Express.js, Javascript, Mustache, HTML/CSS, Heroku, ElephantSQL
 
 
 * **Developers:**
