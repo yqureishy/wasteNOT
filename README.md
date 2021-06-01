@@ -1,3 +1,4 @@
+
 # wasteNOT
 
 * **Live link:**
@@ -8,10 +9,10 @@ https://wastenotorg.herokuapp.com
 * **Purpose of the app:** <br/><br/>
  This app was created for a theoretical charitable organization that facilitates donation of excess food from restaurants to food banks and soup kitchens.  
 
-* **Features:** 
+* **Features:**
 
     Registration and login available for participating restaurant users; separate login available for admins with different permissions.
-    
+
     Restaurant users have a profile that allows them to list a new donation for pickup, view all past donations, and update their user info.
 
     Admin users have a profile that allows them to add view donations to plan a pickup route and remove donations from this list after pickup is complete. They can add new site admins, and can add new food banks to the distribution network.
@@ -37,7 +38,6 @@ Node.js, Express.js, Javascript, Mustache, HTML/CSS, Heroku, ElephantSQL
 
 
 
-
 * **Screenshots of Admin Pages:**
 
 
@@ -45,8 +45,14 @@ Node.js, Express.js, Javascript, Mustache, HTML/CSS, Heroku, ElephantSQL
 
 
 
-
 * **Screenshots of Foodbank Pages:**
 
 
 ![](https://github.com/nicolealdurien/wasteNOT/blob/master/static/img/foodbankpages.png?raw=true)
+
+
+
+* **Code Snippet for New Restaurant Registration:**
+
+
+![](https://github.com/nicolealdurien/wasteNOT/blob/master/static/img/snippet.png?raw=true)
